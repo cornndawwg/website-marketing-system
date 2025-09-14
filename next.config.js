@@ -13,7 +13,8 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
-  output: 'standalone',
+  // Temporarily disable standalone output for debugging
+  // output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
