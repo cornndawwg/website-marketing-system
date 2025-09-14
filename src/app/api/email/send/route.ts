@@ -27,9 +27,9 @@ export async function POST(request: NextRequest) {
         success = await sendQuoteConfirmation(
           customerEmail,
           customerName,
-          data.serviceType,
-          data.priceMin,
-          data.priceMax,
+          data.serviceType || 'Window Cleaning',
+          data.priceMin || 0,
+          data.priceMax || 0,
           emailConfig,
           companyInfo
         )
