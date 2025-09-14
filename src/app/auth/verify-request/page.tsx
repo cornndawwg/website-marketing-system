@@ -37,7 +37,7 @@ export default function VerifyRequestPage() {
             </div>
 
             <div className="text-sm text-gray-600">
-              <p><strong>Didn't receive the email?</p>
+              <p><strong>Didn't receive the email?</strong></p>
               <ul className="mt-2 space-y-1">
                 <li>• Check your spam/junk folder</li>
                 <li>• Make sure you entered the correct email address</li>

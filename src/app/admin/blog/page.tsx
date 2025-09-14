@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { BlogPostList } from '@/components/blog/blog-post-list'
-import { BlogPostEditor } from '@/components/blog/blog-post-editor'
+import { BlogPostEditor } from '@/components/blog/blog-post'
 
 interface BlogPost {
   id: string
