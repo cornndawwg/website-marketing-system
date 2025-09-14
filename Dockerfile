@@ -48,10 +48,10 @@ COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
 USER nextjs
 
-EXPOSE 3000
+# Railway provides PORT=8080; expose 8080 and let runtime env control it
+EXPOSE 8080
 
-ENV PORT 3000
-# set hostname to localhost
+# set hostname to listen on all interfaces
 ENV HOSTNAME "0.0.0.0"
 
 # server.js is created by next build from the standalone output
