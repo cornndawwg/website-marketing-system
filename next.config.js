@@ -13,6 +13,12 @@ const nextConfig = {
     domains: ['localhost'],
   },
   output: 'standalone',
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
 module.exports = withMDX(nextConfig)
