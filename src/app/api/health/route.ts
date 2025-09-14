@@ -1,6 +1,8 @@
-import { NextResponse } from 'next/server'
+export const dynamic = 'force-dynamic'
 
 export async function GET() {
-  // Ultra-simple health check - just return OK
-  return NextResponse.json({ status: 'ok' })
+  return new Response('ok', {
+    status: 200,
+    headers: { 'content-type': 'text/plain' },
+  })
 }
