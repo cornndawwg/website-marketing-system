@@ -1,0 +1,255 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      String   @default("owner")
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id])
+  createdAt DateTime @default(now())
+  
+  // NextAuth fields
+  accounts Account[]
+  sessions Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Customer {
+  id        String   @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String?
+  phone     String?
+  address1  String?
+  address2  String?
+  city      String?
+  state     String?
+  zip       String?
+  source    String?
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id])
+  createdAt DateTime @default(now())
+  
+  quotes       Quote[]
+  leads        Lead[]
+  appointments Appointment[]
+  jobs         Job[]
+  messages     Message[]
+}
+
+model Service {
+  id            String  @id @default(cuid())
+  slug          String  @unique
+  name          String
+  type          String  // res | com
+  basePriceModel Json
+  active        Boolean @default(true)
+  companyId     String?
+  company       Company? @relation(fields: [companyId], references: [id])
+  
+  quoteItems QuoteItem[]
+}
+
+model Quote {
+  id        String   @id @default(cuid())
+  customer  Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  variant   String   // res | com
+  inputs    Json
+  priceMin  Int
+  priceMax  Int
+  status    String   @default("new") // new | sent | accepted | rejected
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id])
+  createdAt DateTime @default(now())
+  
+  items QuoteItem[]
+  jobs  Job[]
+}
+
+model QuoteItem {
+  id        String  @id @default(cuid())
+  quote     Quote   @relation(fields: [quoteId], references: [id])
+  quoteId   String
+  service   Service @relation(fields: [serviceId], references: [id])
+  serviceId String
+  qty       Int
+  meta      Json?
+}
+
+model Lead {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  channel    String   // form | chat | phone | sms
+  payload    Json
+  status     String   @default("new") // new | contacted | converted | lost
+  companyId  String?
+  company    Company? @relation(fields: [companyId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model Appointment {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  type       String   // estimate | job
+  startsAt   DateTime
+  endsAt     DateTime
+  gcEventId  String?
+  location   Json?
+  notes      String?
+  status     String   @default("scheduled") // scheduled | confirmed | completed | cancelled
+  companyId  String?
+  company    Company? @relation(fields: [companyId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model Job {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  quote      Quote?   @relation(fields: [quoteId], references: [id])
+  quoteId    String?
+  scheduledAt DateTime?
+  status     String   @default("pending") // pending | in_progress | done | invoiced
+  companyId  String?
+  company    Company? @relation(fields: [companyId], references: [id])
+  createdAt  DateTime @default(now())
+  
+  invoices Invoice[]
+}
+
+model Invoice {
+  id             String   @id @default(cuid())
+  job            Job      @relation(fields: [jobId], references: [id])
+  jobId          String
+  stripeInvoiceId String?
+  amount         Int
+  status         String   @default("draft") // draft | sent | paid | void
+  sentAt         DateTime?
+  paidAt         DateTime?
+  companyId      String?
+  company        Company? @relation(fields: [companyId], references: [id])
+  createdAt      DateTime @default(now())
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  direction  String   // in | out
+  medium     String   // web | sms | email
+  body       String
+  meta       Json?
+  companyId  String?
+  company    Company? @relation(fields: [companyId], references: [id])
+  createdAt  DateTime @default(now())
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  slug        String    @unique
+  title       String
+  excerpt     String?
+  content_mdx String    @db.Text
+  status      String    @default("draft") // draft | published
+  publishedAt DateTime?
+  authorId    String?
+  coverImage  String?
+  companyId   String?
+  company     Company?  @relation(fields: [companyId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model ReviewRef {
+  id         String   @id @default(cuid())
+  platform   String   // google | facebook
+  url        String
+  rating     Int
+  capturedAt DateTime @default(now())
+}
+
+model ServiceArea {
+  id        String @id @default(cuid())
+  name      String
+  slug      String @unique
+  geo       Json?
+  active    Boolean @default(true)
+  companyId String?
+  company   Company? @relation(fields: [companyId], references: [id])
+}
+
+model Company {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  domain    String?
+  email     String?
+  phone     String?
+  address   Json?
+  logo      String?
+  colors    Json?    // Brand colors
+  settings  Json?    // All integration settings
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  users      User[]
+  customers  Customer[]
+  quotes     Quote[]
+  leads      Lead[]
+  appointments Appointment[]
+  jobs       Job[]
+  invoices   Invoice[]
+  messages   Message[]
+  blogPosts  BlogPost[]
+  services   Service[]
+  serviceAreas ServiceArea[]
+}
