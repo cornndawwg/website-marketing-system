@@ -87,6 +87,10 @@ export async function sendQuoteConfirmation(
   try {
     const emailService = new EmailService(companyConfig)
     
+    // Ensure all parameters have default values
+    const safePriceMin = typeof priceMin === 'number' ? priceMin : 0
+    const safePriceMax = typeof priceMax === 'number' ? priceMax : 0
+    
     return await emailService.sendEmail({
       to: customerEmail,
       templateId: 'quoteConfirmation',
@@ -94,8 +98,8 @@ export async function sendQuoteConfirmation(
         customerName: customerName || 'Valued Customer',
         companyName: companyInfo?.name || 'Window Cleaning Company',
         serviceType: serviceType || 'Window Cleaning',
-        priceMin: (priceMin || 0).toString(),
-        priceMax: (priceMax || 0).toString(),
+        priceMin: safePriceMin.toString(),
+        priceMax: safePriceMax.toString(),
         requestDate: new Date().toLocaleDateString(),
         companyPhone: companyInfo?.phone || '',
         companyEmail: companyInfo?.email || '',

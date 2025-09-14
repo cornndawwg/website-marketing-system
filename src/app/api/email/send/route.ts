@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { EmailService, sendQuoteConfirmation, sendAppointmentConfirmation, sendAppointmentReminder, sendInvoiceNotification } from '@/lib/email-service'
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,6 +20,9 @@ export async function POST(request: NextRequest) {
     }
 
     let success = false
+
+    // Dynamic import to avoid build-time issues
+    const { sendQuoteConfirmation, sendAppointmentConfirmation, sendAppointmentReminder, sendInvoiceNotification } = await import('@/lib/email-service')
 
     switch (type) {
       case 'quoteConfirmation':
