@@ -84,24 +84,29 @@ export async function sendQuoteConfirmation(
     website: string
   }
 ) {
-  const emailService = new EmailService(companyConfig)
-  
-  return await emailService.sendEmail({
-    to: customerEmail,
-    templateId: 'quoteConfirmation',
-    variables: {
-      customerName,
-      companyName: companyInfo.name,
-      serviceType,
-      priceMin: priceMin.toString(),
-      priceMax: priceMax.toString(),
-      requestDate: new Date().toLocaleDateString(),
-      companyPhone: companyInfo.phone,
-      companyEmail: companyInfo.email,
-      companyWebsite: companyInfo.website
-    },
-    companyConfig
-  })
+  try {
+    const emailService = new EmailService(companyConfig)
+    
+    return await emailService.sendEmail({
+      to: customerEmail,
+      templateId: 'quoteConfirmation',
+      variables: {
+        customerName: customerName || 'Valued Customer',
+        companyName: companyInfo?.name || 'Window Cleaning Company',
+        serviceType: serviceType || 'Window Cleaning',
+        priceMin: (priceMin || 0).toString(),
+        priceMax: (priceMax || 0).toString(),
+        requestDate: new Date().toLocaleDateString(),
+        companyPhone: companyInfo?.phone || '',
+        companyEmail: companyInfo?.email || '',
+        companyWebsite: companyInfo?.website || ''
+      },
+      companyConfig
+    })
+  } catch (error) {
+    console.error('Error sending quote confirmation email:', error)
+    return false
+  }
 }
 
 export async function sendAppointmentConfirmation(
