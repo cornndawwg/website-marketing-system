@@ -28,7 +28,7 @@ describe('Quote API Endpoints', () => {
       const mockQuote = { id: 'quote-1', customerId: 'customer-1' }
       const mockLead = { id: 'lead-1', customerId: 'customer-1' }
 
-      const { prisma } = require('@/lib/prisma')
+      const { prisma } = await import('@/lib/prisma')
       prisma.customer.upsert.mockResolvedValue(mockCustomer)
       prisma.quote.create.mockResolvedValue(mockQuote)
       prisma.lead.create.mockResolvedValue(mockLead)
@@ -123,7 +123,7 @@ describe('Quote API Endpoints', () => {
     })
 
     it('should handle database errors', async () => {
-      const { prisma } = require('@/lib/prisma')
+      const { prisma } = await import('@/lib/prisma')
       prisma.customer.upsert.mockRejectedValue(new Error('Database error'))
 
       const requestBody = {
@@ -170,7 +170,7 @@ describe('Quote API Endpoints', () => {
       const mockQuote = { id: 'quote-1', customerId: 'customer-1' }
       const mockLead = { id: 'lead-1', customerId: 'customer-1' }
 
-      const { prisma } = require('@/lib/prisma')
+      const { prisma } = await import('@/lib/prisma')
       prisma.customer.upsert.mockResolvedValue(mockCustomer)
       prisma.quote.create.mockResolvedValue(mockQuote)
       prisma.lead.create.mockResolvedValue(mockLead)

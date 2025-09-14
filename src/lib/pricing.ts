@@ -90,8 +90,8 @@ export function calculateResidentialPricing(inputs: PricingInputs): PricingResul
   const { windows, addOns = {}, access = 'normal', frequency = 'one_time', travel_miles = 0 } = inputs
 
   // Calculate base pricing
-  let baseMin = 0
-  let baseMax = 0
+    const baseMin = 0
+    const baseMax = 0
 
   baseMin += windows.ground * residentialRules.base.per_window.ground[0]
   baseMax += windows.ground * residentialRules.base.per_window.ground[1]

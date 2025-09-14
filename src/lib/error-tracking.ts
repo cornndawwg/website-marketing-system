@@ -17,7 +17,7 @@ class ErrorTracker {
   private errors: ErrorInfo[] = []
   private maxErrors = 100
 
-  logError(error: Error, errorInfo?: any) {
+  logError(error: Error, errorInfo?: Record<string, unknown>) {
     const errorData: ErrorInfo = {
       message: error.message,
       stack: error.stack,
@@ -107,7 +107,7 @@ export class ErrorBoundary extends React.Component<
   { children: React.ReactNode; fallback?: React.ComponentType<{ error: Error }> },
   { hasError: boolean; error?: Error }
 > {
-  constructor(props: any) {
+  constructor(props: { children: React.ReactNode; fallback?: React.ComponentType<{ error: Error }> }) {
     super(props)
     this.state = { hasError: false }
   }
@@ -116,7 +116,7 @@ export class ErrorBoundary extends React.Component<
     return { hasError: true, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
+  componentDidCatch(error: Error, errorInfo: Record<string, unknown>) {
     errorTracker.logError(error, errorInfo)
   }
 
@@ -216,7 +216,7 @@ export const trackPerformance = (name: string, startTime: number) => {
 }
 
 // API error tracking
-export const trackApiError = (url: string, status: number, error: any) => {
+export const trackApiError = (url: string, status: number, error: Error | string) => {
   errorTracker.logError(new Error(`API Error: ${status} ${url}`), {
     type: 'api',
     url,

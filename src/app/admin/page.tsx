@@ -75,7 +75,7 @@ export default function AdminDashboard() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600">Welcome back! Here's what's happening with your business.</p>
+        <p className="text-gray-600">Welcome back! Here&apos;s what&apos;s happening with your business.</p>
       </div>
 
       {/* Stats Cards */}
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
         <Card>
           <CardHeader>
             <CardTitle>Upcoming Appointments</CardTitle>
-            <CardDescription>Today and tomorrow's schedule</CardDescription>
+            <CardDescription>Today and tomorrow&apos;s schedule</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
