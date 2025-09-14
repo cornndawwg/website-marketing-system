@@ -1,21 +1,10 @@
-import { withAuth } from 'next-auth/middleware'
+// Temporarily disable middleware for initial deployment
+// import { withAuth } from 'next-auth/middleware'
 
-export default withAuth(
-  function middleware(req) {
-    // Add any additional middleware logic here
-  },
-  {
-    callbacks: {
-      authorized: ({ token, req }) => {
-        // Only allow access to admin routes if user is authenticated
-        if (req.nextUrl.pathname.startsWith('/admin')) {
-          return !!token
-        }
-        return true
-      },
-    },
-  }
-)
+export default function middleware() {
+  // Temporarily disabled for deployment
+  return
+}
 
 export const config = {
   matcher: ['/admin/:path*']
