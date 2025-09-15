@@ -1,12 +1,14 @@
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Service Areas - Moreland Window Cleaning',
   description: 'We service Walton County, GA and surrounding counties and cities.'
 }
 
-import { prisma } from '@/lib/prisma'
 import Link from 'next/link'
 
 export default async function AreasPage() {
+  const { prisma } = await import('@/lib/prisma')
   const areas = await prisma.serviceArea.findMany({
     where: { active: true },
     orderBy: { name: 'asc' },

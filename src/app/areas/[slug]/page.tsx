@@ -1,23 +1,11 @@
-import { prisma } from '@/lib/prisma'
+export const dynamic = 'force-dynamic'
+
 import { notFound } from 'next/navigation'
 
 interface Params { params: { slug: string } }
 
-export async function generateStaticParams() {
-  const areas = await prisma.serviceArea.findMany({ select: { slug: true }, where: { active: true } })
-  return areas.map(a => ({ slug: a.slug }))
-}
-
-export async function generateMetadata({ params }: Params) {
-  const area = await prisma.serviceArea.findUnique({ where: { slug: params.slug } })
-  if (!area) return { title: 'Service Area' }
-  return {
-    title: `${area.name} Window Cleaning Services`,
-    description: `Professional window cleaning services in ${area.name}. Residential and commercial.`
-  }
-}
-
 export default async function AreaPage({ params }: Params) {
+  const { prisma } = await import('@/lib/prisma')
   const area = await prisma.serviceArea.findUnique({ where: { slug: params.slug } })
   if (!area) return notFound()
 

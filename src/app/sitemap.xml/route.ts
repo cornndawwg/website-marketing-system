@@ -1,8 +1,8 @@
 import { NextResponse } from 'next/server'
-import { prisma } from '@/lib/prisma'
 
 export async function GET() {
   const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const { prisma } = await import('@/lib/prisma')
   const areas = await prisma.serviceArea.findMany({ where: { active: true }, select: { slug: true } })
   const areaUrls = areas.map(a => `
   <url>
