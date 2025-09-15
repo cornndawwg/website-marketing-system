@@ -163,30 +163,32 @@ export function NavigationEnhanced() {
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-screen max-w-none max-h-96 overflow-y-auto" align="start">
+              <DropdownMenuContent className="w-screen max-w-none max-h-96 overflow-y-auto border-0 shadow-2xl bg-white/95 backdrop-blur-sm" align="start">
                 <DropdownMenuItem asChild>
-                  <Link href="/areas" className="flex items-center gap-3 p-3">
-                    <Star className="h-5 w-5 text-blue-600" />
+                  <Link href="/areas" className="flex items-center gap-4 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-lg mx-2 mb-2 transition-all duration-200">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                      <Star className="h-5 w-5 text-white" />
+                    </div>
                     <div>
-                      <div className="font-medium">All Service Areas</div>
-                      <div className="text-sm text-gray-500">View complete list</div>
+                      <div className="font-semibold text-gray-900">All Service Areas</div>
+                      <div className="text-sm text-gray-600">View complete list of locations</div>
                     </div>
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuSeparator />
+                <div className="border-t border-gray-100 mx-4 my-2"></div>
                 {isLoading ? (
-                  <DropdownMenuItem disabled>
+                  <div className="flex items-center justify-center py-8">
                     <div className="text-sm text-gray-500">Loading areas...</div>
-                  </DropdownMenuItem>
+                  </div>
                 ) : (
-                  <div className="grid grid-cols-8 gap-6 p-6">
+                  <div className="grid grid-cols-8 gap-6 p-6 bg-gradient-to-br from-gray-50/50 to-blue-50/30">
                     {Object.entries(organizedAreas).map(([countyName, { county, cities }]) => (
                       <div key={countyName} className="space-y-2">
                         {/* County Header */}
                         {county && (
                           <DropdownMenuItem asChild>
-                            <Link href={`/areas/${county.slug}`} className="flex items-center gap-3 p-3 font-semibold text-blue-600 hover:bg-blue-50 rounded">
-                              <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                            <Link href={`/areas/${county.slug}`} className="flex items-center gap-3 p-3 font-semibold text-blue-700 hover:bg-blue-50 hover:shadow-sm rounded-lg transition-all duration-200 border border-transparent hover:border-blue-200">
+                              <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex-shrink-0 shadow-sm" />
                               <span className="text-sm">{county.name}</span>
                             </Link>
                           </DropdownMenuItem>
@@ -194,12 +196,12 @@ export function NavigationEnhanced() {
                         
                         {/* Cities under county */}
                         {cities.length > 0 && (
-                          <div className="ml-5 space-y-1">
+                          <div className="ml-6 space-y-1">
                             {cities.map((city) => (
                               <DropdownMenuItem key={city.id} asChild>
-                                <Link href={`/areas/${city.slug}`} className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded">
-                                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0" />
-                                  <span className="text-sm">{city.name}</span>
+                                <Link href={`/areas/${city.slug}`} className="flex items-center gap-2 p-2 text-gray-600 hover:bg-white hover:shadow-sm rounded-md transition-all duration-150 border border-transparent hover:border-gray-200">
+                                  <div className="w-1.5 h-1.5 bg-gradient-to-br from-gray-400 to-gray-500 rounded-full flex-shrink-0" />
+                                  <span className="text-sm hover:text-gray-800 transition-colors">{city.name}</span>
                                 </Link>
                               </DropdownMenuItem>
                             ))}
