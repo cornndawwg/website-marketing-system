@@ -51,11 +51,18 @@ export default function CommercialPage() {
               </div>
               
               <div className="relative">
-                <div className="w-full h-96 bg-gradient-to-br from-blue-200 to-blue-300 rounded-3xl flex items-center justify-center">
-                  <div className="text-center text-blue-800">
-                    <Building className="h-24 w-24 mx-auto mb-4" />
-                    <div className="text-2xl font-bold">Commercial Cleaning</div>
-                    <div className="text-lg">Professional Results</div>
+                <div className="w-full h-96 bg-gradient-to-br from-blue-200 to-blue-300 rounded-3xl overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                    alt="Commercial building window cleaning"
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
+                  <div className="absolute inset-0 bg-blue-900/20 rounded-3xl flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <Building className="h-16 w-16 mx-auto mb-4" />
+                      <div className="text-2xl font-bold">Commercial Cleaning</div>
+                      <div className="text-lg">Professional Results</div>
+                    </div>
                   </div>
                 </div>
               </div>

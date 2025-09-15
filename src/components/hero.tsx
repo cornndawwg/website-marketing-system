@@ -29,7 +29,7 @@ export function Hero() {
             
             <div className="space-y-6">
               <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
-                we KNOW how to MAKE WINDOWS SPARKLE
+                We KNOW how to MAKE WINDOWS SPARKLE
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 Professional window cleaning that's as reliable as it is refreshing. Serving homeowners and businesses across Georgia with a smile.

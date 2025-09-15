@@ -51,11 +51,18 @@ export default function GutterCleaningPage() {
               </div>
               
               <div className="relative">
-                <div className="w-full h-96 bg-gradient-to-br from-blue-200 to-blue-300 rounded-3xl flex items-center justify-center">
-                  <div className="text-center text-blue-800">
-                    <Zap className="h-24 w-24 mx-auto mb-4" />
-                    <div className="text-2xl font-bold">Gutter Cleaning</div>
-                    <div className="text-lg">Home Protection</div>
+                <div className="w-full h-96 bg-gradient-to-br from-blue-200 to-blue-300 rounded-3xl overflow-hidden">
+                  <img 
+                    src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                    alt="Professional gutter cleaning service"
+                    className="w-full h-full object-cover rounded-3xl"
+                  />
+                  <div className="absolute inset-0 bg-blue-900/20 rounded-3xl flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <Zap className="h-16 w-16 mx-auto mb-4" />
+                      <div className="text-2xl font-bold">Gutter Cleaning</div>
+                      <div className="text-lg">Home Protection</div>
+                    </div>
                   </div>
                 </div>
               </div>
