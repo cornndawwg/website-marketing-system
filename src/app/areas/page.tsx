@@ -99,6 +99,195 @@ export default async function AreasPage() {
         </div>
       </section>
 
+      {/* Local SEO Content Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+                Professional Window Cleaning Services Across Georgia
+              </h2>
+              <div className="space-y-6 text-gray-600">
+                <p className="text-lg leading-relaxed">
+                  Moreland Window Cleaning proudly serves residential and commercial customers throughout Walton County and surrounding areas. Our experienced team brings professional-grade window cleaning services directly to your doorstep, whether you're in Monroe, Loganville, Social Circle, or any of our other service areas.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  We understand that Georgia's climate can be challenging for maintaining clean windows. From pollen season in spring to summer storms and winter weather, our specialized techniques ensure your windows stay crystal clear year-round. Our local expertise means we know the best times to clean and the most effective methods for Georgia homes and businesses.
+                </p>
+                <p className="text-lg leading-relaxed">
+                  Each of our service areas receives the same high-quality attention and professional service. We're fully licensed, bonded, and insured, giving you peace of mind whether we're cleaning your home's windows or your commercial building's storefront. Our commitment to excellence has made us the trusted choice for window cleaning across the region.
+                </p>
+              </div>
+            </div>
+            <div className="relative">
+              <div className="aspect-square rounded-2xl overflow-hidden">
+                <img 
+                  src="https://picsum.photos/500/500?random=50"
+                  alt="Professional window cleaning service in Georgia"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Overview */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+              Complete Window Cleaning Solutions
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              From residential homes to commercial buildings, we provide comprehensive window cleaning services tailored to your needs
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl border border-gray-200 p-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <MapPin className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Residential Window Cleaning</h3>
+              <p className="text-gray-600 mb-4">
+                Professional home window cleaning services including interior and exterior windows, screen cleaning, and track maintenance. Perfect for homeowners who want crystal-clear views and enhanced curb appeal.
+              </p>
+              <ul className="text-sm text-gray-500 space-y-2">
+                <li>• Interior & exterior window cleaning</li>
+                <li>• Screen cleaning and reinstallation</li>
+                <li>• Window track and sill cleaning</li>
+                <li>• Hard water spot removal</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-gray-200 p-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <Clock className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Commercial Window Cleaning</h3>
+              <p className="text-gray-600 mb-4">
+                Business and commercial window cleaning services for offices, retail stores, restaurants, and multi-tenant buildings. We work around your schedule to minimize disruption.
+              </p>
+              <ul className="text-sm text-gray-500 space-y-2">
+                <li>• Storefront and office building cleaning</li>
+                <li>• High-rise and multi-story buildings</li>
+                <li>• Flexible scheduling options</li>
+                <li>• Regular maintenance programs</li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-gray-200 p-8">
+              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                <Phone className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Specialized Services</h3>
+              <p className="text-gray-600 mb-4">
+                Additional services including gutter cleaning, pressure washing, and specialized cleaning for unique window types and challenging situations.
+              </p>
+              <ul className="text-sm text-gray-500 space-y-2">
+                <li>• Gutter cleaning and maintenance</li>
+                <li>• Pressure washing services</li>
+                <li>• Specialty window cleaning</li>
+                <li>• Emergency cleaning services</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Area Benefits */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'var(--font-display)' }}>
+              Why Georgia Residents Choose Moreland Window Cleaning
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Our local expertise and commitment to quality make us the preferred choice for window cleaning across Walton County and surrounding areas
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Georgia Weather Expertise</h3>
+                  <p className="text-gray-600">
+                    We understand Georgia's unique climate challenges, from spring pollen to summer humidity and winter weather. Our cleaning methods are specifically adapted for local conditions.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Business Support</h3>
+                  <p className="text-gray-600">
+                    As a locally owned and operated business, we're invested in our community's success. We support local events and maintain strong relationships with area businesses.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Quick Response Times</h3>
+                  <p className="text-gray-600">
+                    Being local means we can respond quickly to your needs. Whether it's an emergency cleaning or a last-minute appointment, we're just a phone call away.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-8">
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Familiar with Local Architecture</h3>
+                  <p className="text-gray-600">
+                    From historic homes in Monroe to modern developments in Loganville, we're familiar with the diverse architecture throughout our service areas.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Knowledge</h3>
+                  <p className="text-gray-600">
+                    We know the best routes, understand local traffic patterns, and can work efficiently around community events and schedules.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <div className="w-6 h-6 bg-blue-600 rounded-full" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Personalized Service</h3>
+                  <p className="text-gray-600">
+                    Our local team provides personalized service with attention to detail. We remember your preferences and build lasting relationships with our customers.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
