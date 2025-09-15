@@ -224,7 +224,7 @@
 
 ### Content Creation
 - [x] Blog posts (2 initial posts)
-- [ ] Service area pages
+- [x] Service area pages (/areas, /areas/[slug])
 - [x] FAQ content (/faq page)
 - [ ] Testimonials collection
 - [x] Review integration (Google Reviews CTA)

@@ -36,6 +36,9 @@ export function Navigation() {
             <Link href="/blog" className="text-gray-700 hover:text-blue-600">
               Blog
             </Link>
+            <Link href="/areas" className="text-gray-700 hover:text-blue-600">
+              Areas
+            </Link>
             <Link href="/contact" className="text-gray-700 hover:text-blue-600">
               Contact
             </Link>
@@ -81,6 +84,9 @@ export function Navigation() {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/blog">Blog</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/areas">Areas</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="/contact">Contact</Link>
