@@ -4,6 +4,7 @@ import { Services } from '@/components/services'
 import { QuoteCalculator } from '@/components/quote-calculator'
 import { Testimonials } from '@/components/testimonials'
 import { ReviewsCTA } from '@/components/reviews-cta'
+import { AwardsStrip } from '@/components/marketing/awards-strip'
 import { Footer } from '@/components/footer'
 import { LocalBusinessSchema, FAQSchema } from '@/components/schema-markup'
 
@@ -18,6 +19,7 @@ export default function Home() {
         <Services />
         <QuoteCalculator />
         <Testimonials />
+        <AwardsStrip />
         <ReviewsCTA />
       </main>
       <Footer />

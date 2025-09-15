@@ -30,32 +30,29 @@ export function Services() {
   ]
 
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Our Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Professional window cleaning and related services for residential and commercial properties in Walton County and surrounding areas.
-          </p>
+          <span className="inline-block rounded-full bg-blue-50 text-blue-700 px-4 py-1 text-sm font-semibold mb-3">What we do</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Professional Cleaning Services</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">Residential and commercial window cleaning plus related services delivered with care and precision.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="h-full">
+            <Card key={index} className="h-full transition hover:shadow-lg">
               <CardHeader>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                  <service.icon className="h-6 w-6 text-blue-600" />
+                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
+                  <service.icon className="h-7 w-7 text-blue-700" />
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <CardDescription>{service.description}</CardDescription>
+                <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
+                <CardDescription className="text-gray-600">{service.description}</CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                      <div className="w-1.5 h-1.5 bg-blue-600 rounded-full mr-3"></div>
+                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
+                      <div className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-blue-600"></div>
                       {feature}
                     </li>
                   ))}
