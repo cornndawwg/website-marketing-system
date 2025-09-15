@@ -43,12 +43,11 @@ export function BlogSection() {
             <Link key={index} href={`/blog/${post.slug}`} className="group">
               <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300">
                 <div className="aspect-[4/3] relative overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
-                    <div className="text-center text-blue-600">
-                      <div className="text-4xl mb-2">📰</div>
-                      <div className="text-sm font-medium">Blog Post</div>
-                    </div>
-                  </div>
+                  <img 
+                    src={`https://picsum.photos/400/300?random=${index + 20}`}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
                   <div className="absolute top-4 left-4">
                     <span className="inline-block bg-white/90 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">
                       {post.category}

@@ -52,31 +52,35 @@ export function PremiumSection() {
           <div className="relative">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-4">
-                <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                  <div className="text-center text-blue-600">
-                    <div className="text-4xl mb-2">✨</div>
-                    <div className="text-sm font-medium">Sparkling Clean</div>
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/300/300?random=30"
+                    alt="Sparkling clean windows"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center">
-                  <div className="text-center text-blue-700">
-                    <div className="text-4xl mb-2">🏢</div>
-                    <div className="text-sm font-medium">Commercial</div>
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/300/300?random=31"
+                    alt="Commercial window cleaning"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               <div className="space-y-4 mt-8">
-                <div className="aspect-square bg-gradient-to-br from-blue-200 to-blue-300 rounded-2xl flex items-center justify-center">
-                  <div className="text-center text-blue-700">
-                    <div className="text-4xl mb-2">🏠</div>
-                    <div className="text-sm font-medium">Residential</div>
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/300/300?random=32"
+                    alt="Residential window cleaning"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                  <div className="text-center text-blue-600">
-                    <div className="text-4xl mb-2">🛡️</div>
-                    <div className="text-sm font-medium">Insured</div>
-                  </div>
+                <div className="aspect-square rounded-2xl overflow-hidden">
+                  <img 
+                    src="https://picsum.photos/300/300?random=33"
+                    alt="Professional window cleaning service"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

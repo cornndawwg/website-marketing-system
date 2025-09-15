@@ -48,10 +48,17 @@ export function Hero() {
           <div className="relative">
             <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl transform rotate-12 opacity-60" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-200 to-blue-300 rounded-xl transform -rotate-6 opacity-50" />
-            <div className="relative z-10 w-full h-96 bg-gradient-to-br from-blue-50 to-blue-100 rounded-3xl flex items-center justify-center">
-              <div className="text-center text-blue-600">
-                <div className="text-6xl mb-4">✨</div>
-                <div className="text-lg font-semibold">Crystal Clear Results</div>
+            <div className="relative z-10 w-full h-96 rounded-3xl overflow-hidden">
+              <img 
+                src="https://picsum.photos/600/400?random=40"
+                alt="Professional window cleaning service"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-blue-900/20 flex items-center justify-center">
+                <div className="text-center text-white">
+                  <div className="text-6xl mb-4">✨</div>
+                  <div className="text-lg font-semibold">Crystal Clear Results</div>
+                </div>
               </div>
             </div>
           </div>
