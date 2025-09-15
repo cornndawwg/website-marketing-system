@@ -225,9 +225,9 @@ wd# Moreland Window Cleaning MVP - Implementation Checklist
 ### Content Creation
 - [x] Blog posts (2 initial posts)
 - [ ] Service area pages
-- [ ] FAQ content
+- [x] FAQ content (/faq page)
 - [ ] Testimonials collection
-- [ ] Review integration
+- [x] Review integration (Google Reviews CTA)
 
 ### Marketing Setup
 - [ ] Google My Business

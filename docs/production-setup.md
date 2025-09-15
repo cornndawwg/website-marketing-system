@@ -83,5 +83,9 @@ Set one of the following in Railway variables and the app will include the tag:
 - `NEXT_PUBLIC_GA_ID` – e.g., G-XXXXXXXXXX
 - `NEXT_PUBLIC_GTM_ID` – e.g., GTM-XXXXXXX
 
+## Reviews Link (Optional)
+
+Set `NEXT_PUBLIC_GOOGLE_REVIEWS_URL` to your business's Google Reviews page URL to enable the homepage Reviews CTA button.
+
 
 

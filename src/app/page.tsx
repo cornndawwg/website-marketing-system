@@ -3,6 +3,7 @@ import { Hero } from '@/components/hero'
 import { Services } from '@/components/services'
 import { QuoteCalculator } from '@/components/quote-calculator'
 import { Testimonials } from '@/components/testimonials'
+import { ReviewsCTA } from '@/components/reviews-cta'
 import { Footer } from '@/components/footer'
 import { LocalBusinessSchema, FAQSchema } from '@/components/schema-markup'
 
@@ -17,6 +18,7 @@ export default function Home() {
         <Services />
         <QuoteCalculator />
         <Testimonials />
+        <ReviewsCTA />
       </main>
       <Footer />
     </div>
