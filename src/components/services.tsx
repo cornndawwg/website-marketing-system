@@ -1,31 +1,36 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Home, Building2, Droplets, Sun } from 'lucide-react'
+import Link from 'next/link'
 
 export function Services() {
   const services = [
     {
-      icon: Home,
       title: 'Residential Window Cleaning',
-      description: 'Professional interior and exterior window cleaning for your home. We clean windows, screens, tracks, and sills.',
-      features: ['Interior & Exterior Windows', 'Screen Cleaning', 'Track & Sill Cleaning', 'Hard Water Stain Removal']
+      description: 'Crystal-clear windows that boost your home\'s curb appeal and let the sunshine in.',
+      image: '/api/placeholder/400/300',
+      category: 'Home Care'
     },
     {
-      icon: Building2,
       title: 'Commercial Window Cleaning',
-      description: 'Reliable window cleaning services for businesses, offices, and commercial properties.',
-      features: ['Storefront Cleaning', 'Office Buildings', 'Post-Construction Cleanup', 'Regular Maintenance']
+      description: 'Professional window cleaning that helps your business make a spotless first impression.',
+      image: '/api/placeholder/400/300',
+      category: 'Business Solutions'
     },
     {
-      icon: Droplets,
-      title: 'Gutter Cleaning',
-      description: 'Keep your gutters clean and functional with our professional gutter cleaning service.',
-      features: ['Gutter Cleaning', 'Downspout Cleaning', 'Debris Removal', 'Inspection & Maintenance']
+      title: 'Screen & Track Cleaning',
+      description: 'We remove dust, grime, and buildup from screens and tracks for a complete window refresh.',
+      image: '/api/placeholder/400/300',
+      category: 'Home Care / Business Solution'
     },
     {
-      icon: Sun,
-      title: 'Additional Services',
-      description: 'Specialized cleaning services including skylights and hard-to-reach areas.',
-      features: ['Skylight Cleaning', 'High-Rise Windows', 'Pressure Washing', 'Screen Repair']
+      title: 'Interior / Exterior Packages',
+      description: 'Get the full treatment with inside-and-out window cleaning tailored to your space.',
+      image: '/api/placeholder/400/300',
+      category: 'Home Care'
+    },
+    {
+      title: 'Routine Maintenance Plans',
+      description: 'Stay effortlessly clean year-round with scheduled service options that fit your lifestyle.',
+      image: '/api/placeholder/400/300',
+      category: 'Home Care / Business Solutions'
     }
   ]
 
@@ -33,32 +38,38 @@ export function Services() {
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <span className="inline-block rounded-full bg-blue-50 text-blue-700 px-4 py-1 text-sm font-semibold mb-3">What we do</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Professional Cleaning Services</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">Residential and commercial window cleaning plus related services delivered with care and precision.</p>
+          <span className="inline-block text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Our Services</span>
+          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6" style={{ fontFamily: 'var(--font-display)' }}>
+            How Can We Assist You Today?
+          </h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="h-full transition hover:shadow-lg">
-              <CardHeader>
-                <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                  <service.icon className="h-7 w-7 text-blue-700" />
+            <div key={index} className="group relative overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="aspect-[4/3] relative overflow-hidden">
+                <div className="w-full h-full bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                  <div className="text-center text-blue-600">
+                    <div className="text-4xl mb-2">🏠</div>
+                    <div className="text-sm font-medium">Window Cleaning</div>
+                  </div>
                 </div>
-                <CardTitle className="text-xl font-semibold">{service.title}</CardTitle>
-                <CardDescription className="text-gray-600">{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-gray-700">
-                      <div className="mr-3 inline-block h-1.5 w-1.5 rounded-full bg-blue-600"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-4 left-4 right-4">
+                  <span className="inline-block bg-white/90 text-gray-800 text-xs font-semibold px-3 py-1 rounded-full">
+                    {service.category}
+                  </span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-gray-900 mb-3" style={{ fontFamily: 'var(--font-display)' }}>
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
