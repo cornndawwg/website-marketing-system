@@ -53,7 +53,7 @@ export default function ResidentialPage() {
               <div className="relative">
                 <div className="w-full h-96 bg-gradient-to-br from-blue-200 to-blue-300 rounded-3xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1581578731548-c6a0c3f2fcc0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                    src="https://picsum.photos/800/600?random=1" 
                     alt="Professional window cleaning service"
                     className="w-full h-full object-cover rounded-3xl"
                   />
@@ -86,7 +86,7 @@ export default function ResidentialPage() {
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
                   <img 
-                    src="https://images.unsplash.com/photo-1581578731548-c6a0c3f2fcc0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                    src="https://picsum.photos/400/300?random=2" 
                     alt="Interior and exterior window cleaning"
                     className="w-full h-full object-cover"
                   />
@@ -120,7 +120,7 @@ export default function ResidentialPage() {
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
                   <img 
-                    src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                    src="https://picsum.photos/400/300?random=3" 
                     alt="Window screen cleaning"
                     className="w-full h-full object-cover"
                   />
@@ -154,7 +154,7 @@ export default function ResidentialPage() {
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
                   <img 
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
+                    src="https://picsum.photos/400/300?random=4" 
                     alt="Window track and sill cleaning"
                     className="w-full h-full object-cover"
                   />
