@@ -33,10 +33,14 @@ export function NavigationEnhanced() {
         const response = await fetch('/api/areas')
         if (response.ok) {
           const areas = await response.json()
-          setServiceAreas(areas)
+          // Ensure areas is always an array
+          setServiceAreas(Array.isArray(areas) ? areas : [])
+        } else {
+          setServiceAreas([])
         }
       } catch (error) {
         console.error('Failed to fetch service areas:', error)
+        setServiceAreas([])
       } finally {
         setIsLoading(false)
       }
@@ -140,7 +144,7 @@ export function NavigationEnhanced() {
                     <div className="text-sm text-gray-500">Loading areas...</div>
                   </DropdownMenuItem>
                 ) : (
-                  serviceAreas.slice(0, 8).map((area) => (
+                  Array.isArray(serviceAreas) && serviceAreas.slice(0, 8).map((area) => (
                     <DropdownMenuItem key={area.id} asChild>
                       <Link href={`/areas/${area.slug}`} className="p-2">
                         {area.name}
@@ -148,7 +152,7 @@ export function NavigationEnhanced() {
                     </DropdownMenuItem>
                   ))
                 )}
-                {serviceAreas.length > 8 && (
+                {Array.isArray(serviceAreas) && serviceAreas.length > 8 && (
                   <>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
@@ -238,13 +242,13 @@ export function NavigationEnhanced() {
                     {isLoading ? (
                       <DropdownMenuItem disabled>Loading...</DropdownMenuItem>
                     ) : (
-                      serviceAreas.slice(0, 6).map((area) => (
+                      Array.isArray(serviceAreas) && serviceAreas.slice(0, 6).map((area) => (
                         <DropdownMenuItem key={area.id} asChild>
                           <Link href={`/areas/${area.slug}`}>{area.name}</Link>
                         </DropdownMenuItem>
                       ))
                     )}
-                    {serviceAreas.length > 6 && (
+                    {Array.isArray(serviceAreas) && serviceAreas.length > 6 && (
                       <DropdownMenuItem asChild>
                         <Link href="/areas">View All →</Link>
                       </DropdownMenuItem>
