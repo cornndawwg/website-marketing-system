@@ -49,6 +49,53 @@ export function NavigationEnhanced() {
     fetchServiceAreas()
   }, [])
 
+  // Organize areas by county
+  const organizedAreas = serviceAreas.reduce((acc, area) => {
+    if (area.name.includes('County')) {
+      // This is a county
+      const countyName = area.name
+      if (!acc[countyName]) {
+        acc[countyName] = { county: area, cities: [] }
+      } else {
+        acc[countyName].county = area
+      }
+    } else {
+      // This is a city - assign to appropriate county
+      let assigned = false
+      
+      // Define county-city mappings
+      const countyMappings = {
+        'Walton County': ['Monroe', 'Loganville', 'Social Circle', 'Walnut Grove', 'Good Hope'],
+        'Barrow County': ['Winder', 'Auburn', 'Statham'],
+        'Oconee County': ['Watkinsville', 'Bishop'],
+        'Morgan County': ['Madison'],
+        'Newton County': ['Covington', 'Oxford'],
+        'Rockdale County': ['Conyers'],
+        'Gwinnett County': ['Lawrenceville', 'Snellville', 'Dacula']
+      }
+      
+      for (const [county, cities] of Object.entries(countyMappings)) {
+        if (cities.includes(area.name)) {
+          if (!acc[county]) {
+            acc[county] = { county: null, cities: [] }
+          }
+          acc[county].cities.push(area)
+          assigned = true
+          break
+        }
+      }
+      
+      // If not assigned to any county, put in "Other Areas"
+      if (!assigned) {
+        if (!acc['Other Areas']) {
+          acc['Other Areas'] = { county: null, cities: [] }
+        }
+        acc['Other Areas'].cities.push(area)
+      }
+    }
+    return acc
+  }, {} as Record<string, { county: ServiceArea | null, cities: ServiceArea[] }>)
+
   const services = [
     {
       name: 'Residential Window Cleaning',
@@ -116,7 +163,7 @@ export function NavigationEnhanced() {
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-80 max-h-96 overflow-y-auto" align="start">
+              <DropdownMenuContent className="w-[600px] max-h-96 overflow-y-auto" align="start">
                 <DropdownMenuItem asChild>
                   <Link href="/areas" className="flex items-center gap-3 p-3">
                     <Star className="h-5 w-5 text-blue-600" />
@@ -132,14 +179,35 @@ export function NavigationEnhanced() {
                     <div className="text-sm text-gray-500">Loading areas...</div>
                   </DropdownMenuItem>
                 ) : (
-                  Array.isArray(serviceAreas) && serviceAreas.map((area) => (
-                    <DropdownMenuItem key={area.id} asChild>
-                      <Link href={`/areas/${area.slug}`} className="flex items-center gap-3 p-2">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
-                        <span className="text-sm">{area.name}</span>
-                      </Link>
-                    </DropdownMenuItem>
-                  ))
+                  <div className="grid grid-cols-2 gap-4 p-2">
+                    {Object.entries(organizedAreas).map(([countyName, { county, cities }]) => (
+                      <div key={countyName} className="space-y-2">
+                        {/* County Header */}
+                        {county && (
+                          <DropdownMenuItem asChild>
+                            <Link href={`/areas/${county.slug}`} className="flex items-center gap-2 p-2 font-semibold text-blue-600 hover:bg-blue-50 rounded">
+                              <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                              <span className="text-sm">{county.name}</span>
+                            </Link>
+                          </DropdownMenuItem>
+                        )}
+                        
+                        {/* Cities under county */}
+                        {cities.length > 0 && (
+                          <div className="ml-4 space-y-1">
+                            {cities.map((city) => (
+                              <DropdownMenuItem key={city.id} asChild>
+                                <Link href={`/areas/${city.slug}`} className="flex items-center gap-2 p-1.5 text-gray-600 hover:bg-gray-50 rounded">
+                                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0" />
+                                  <span className="text-xs">{city.name}</span>
+                                </Link>
+                              </DropdownMenuItem>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
@@ -213,7 +281,7 @@ export function NavigationEnhanced() {
                     <Star className="h-4 w-4" />
                     Service Areas
                   </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent className="max-h-80 overflow-y-auto">
+                  <DropdownMenuSubContent className="max-h-80 overflow-y-auto w-64">
                     <DropdownMenuItem asChild>
                       <Link href="/areas">All Service Areas</Link>
                     </DropdownMenuItem>
@@ -221,14 +289,35 @@ export function NavigationEnhanced() {
                     {isLoading ? (
                       <DropdownMenuItem disabled>Loading...</DropdownMenuItem>
                     ) : (
-                      Array.isArray(serviceAreas) && serviceAreas.map((area) => (
-                        <DropdownMenuItem key={area.id} asChild>
-                          <Link href={`/areas/${area.slug}`} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
-                            {area.name}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))
+                      <div className="space-y-3 p-2">
+                        {Object.entries(organizedAreas).map(([countyName, { county, cities }]) => (
+                          <div key={countyName} className="space-y-1">
+                            {/* County Header */}
+                            {county && (
+                              <DropdownMenuItem asChild>
+                                <Link href={`/areas/${county.slug}`} className="flex items-center gap-2 p-2 font-semibold text-blue-600">
+                                  <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
+                                  <span className="text-sm">{county.name}</span>
+                                </Link>
+                              </DropdownMenuItem>
+                            )}
+                            
+                            {/* Cities under county */}
+                            {cities.length > 0 && (
+                              <div className="ml-4 space-y-1">
+                                {cities.map((city) => (
+                                  <DropdownMenuItem key={city.id} asChild>
+                                    <Link href={`/areas/${city.slug}`} className="flex items-center gap-2 p-1.5 text-gray-600">
+                                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0" />
+                                      <span className="text-xs">{city.name}</span>
+                                    </Link>
+                                  </DropdownMenuItem>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
                     )}
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
