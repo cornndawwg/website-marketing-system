@@ -1,4 +1,4 @@
-wd# Moreland Window Cleaning MVP - Implementation Checklist
+# Moreland Window Cleaning MVP - Implementation Checklist
 
 ## Phase 1: Foundation & Core Setup ✅
 
