@@ -132,9 +132,7 @@ export default function ContactPage() {
                         <option value="">Select a service</option>
                         <option value="residential">Residential Window Cleaning</option>
                         <option value="commercial">Commercial Window Cleaning</option>
-                        <option value="pressure-washing">Pressure Washing</option>
                         <option value="gutter-cleaning">Gutter Cleaning</option>
-                        <option value="screen-repair">Screen Repair</option>
                         <option value="other">Other</option>
                       </select>
                     </div>

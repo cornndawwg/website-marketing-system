@@ -13,7 +13,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger
 } from '@/components/ui/dropdown-menu'
-import { Menu, User, LogOut, ChevronDown, Home, Building, Droplets, Zap, Shield, Star } from 'lucide-react'
+import { Menu, User, LogOut, ChevronDown, Home, Building, Zap, Star } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 interface ServiceArea {
@@ -51,34 +51,22 @@ export function NavigationEnhanced() {
 
   const services = [
     {
-      name: 'Residential',
+      name: 'Residential Window Cleaning',
       href: '/residential',
       icon: Home,
-      description: 'Home window cleaning services'
+      description: 'Professional home window cleaning services'
     },
     {
-      name: 'Commercial',
+      name: 'Commercial Window Cleaning',
       href: '/commercial',
       icon: Building,
-      description: 'Business window cleaning services'
-    },
-    {
-      name: 'Pressure Washing',
-      href: '/pressure-washing',
-      icon: Droplets,
-      description: 'Exterior cleaning and pressure washing'
+      description: 'Business and commercial window cleaning'
     },
     {
       name: 'Gutter Cleaning',
       href: '/gutter-cleaning',
       icon: Zap,
-      description: 'Gutter cleaning and maintenance'
-    },
-    {
-      name: 'Screen Repair',
-      href: '/screen-repair',
-      icon: Shield,
-      description: 'Window screen repair and replacement'
+      description: 'Gutter cleaning and maintenance services'
     }
   ]
 
