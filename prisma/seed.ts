@@ -128,6 +128,68 @@ async function main() {
     }
   }
 
+  // Seed initial blog posts
+  const posts = [
+    {
+      slug: 'spring-window-cleaning-checklist',
+      title: 'Spring Window Cleaning Checklist: Get Sparkling Results',
+      excerpt: 'A practical checklist to prepare your home or business for spring with crystal-clear windows.',
+      content_mdx: `
+import Image from 'next/image'
+
+# Spring Window Cleaning Checklist
+
+Spring is the perfect time to refresh your property. Use this practical checklist to get your windows sparkling:
+
+## 1. Pre-clean inspection
+- Check frames, tracks, and seals
+- Note any hard water spots or paint overspray
+
+## 2. Dry clean
+- Vacuum or brush tracks and sills
+- Dust blinds and frames
+
+## 3. Wet clean
+- Use professional squeegee technique
+- Work from top to bottom
+
+> Pro tip: Microfiber towels prevent lint and streaks.
+
+If you prefer the pros to handle it, request a quote today!
+`,
+      status: 'published' as const,
+      publishedAt: new Date(),
+    },
+    {
+      slug: 'commercial-window-cleaning-frequency-guide',
+      title: 'How Often Should Commercial Windows Be Cleaned?',
+      excerpt: 'A guide to choosing the right cleaning frequency for storefronts, offices, and multi-tenant buildings.',
+      content_mdx: `
+# How Often Should Commercial Windows Be Cleaned?
+
+The ideal frequency depends on traffic, location, and branding needs:
+
+- Storefronts on busy streets: weekly to bi-weekly
+- Offices in suburban areas: monthly to quarterly
+- Medical and hospitality: weekly to monthly
+
+Consistent cleaning preserves glass, improves curb appeal, and extends seal longevity.
+`,
+      status: 'published' as const,
+      publishedAt: new Date(),
+    },
+  ]
+
+  for (const post of posts) {
+    const existing = await prisma.blogPost.findUnique({ where: { slug: post.slug } })
+    if (!existing) {
+      await prisma.blogPost.create({ data: post as any })
+      console.log('Blog post created:', post.title)
+    } else {
+      console.log('Blog post already exists:', post.title)
+    }
+  }
+
   console.log('Seed completed!')
 }
 

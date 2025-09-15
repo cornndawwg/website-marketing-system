@@ -76,4 +76,12 @@ psql "$DATABASE_URL" -f db_backup_*.sql
 
 For large DBs, consider `pg_restore` with a custom format dump.
 
+## Analytics (Optional)
+
+Set one of the following in Railway variables and the app will include the tag:
+
+- `NEXT_PUBLIC_GA_ID` – e.g., G-XXXXXXXXXX
+- `NEXT_PUBLIC_GTM_ID` – e.g., GTM-XXXXXXX
+
+
 
