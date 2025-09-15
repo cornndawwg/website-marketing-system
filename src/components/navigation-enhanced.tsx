@@ -116,13 +116,13 @@ export function NavigationEnhanced() {
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64" align="start">
+              <DropdownMenuContent className="w-80 max-h-96 overflow-y-auto" align="start">
                 <DropdownMenuItem asChild>
                   <Link href="/areas" className="flex items-center gap-3 p-3">
                     <Star className="h-5 w-5 text-blue-600" />
                     <div>
-                      <div className="font-medium">All Areas</div>
-                      <div className="text-sm text-gray-500">View all service areas</div>
+                      <div className="font-medium">All Service Areas</div>
+                      <div className="text-sm text-gray-500">View complete list</div>
                     </div>
                   </Link>
                 </DropdownMenuItem>
@@ -132,23 +132,14 @@ export function NavigationEnhanced() {
                     <div className="text-sm text-gray-500">Loading areas...</div>
                   </DropdownMenuItem>
                 ) : (
-                  Array.isArray(serviceAreas) && serviceAreas.slice(0, 8).map((area) => (
+                  Array.isArray(serviceAreas) && serviceAreas.map((area) => (
                     <DropdownMenuItem key={area.id} asChild>
-                      <Link href={`/areas/${area.slug}`} className="p-2">
-                        {area.name}
+                      <Link href={`/areas/${area.slug}`} className="flex items-center gap-3 p-2">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                        <span className="text-sm">{area.name}</span>
                       </Link>
                     </DropdownMenuItem>
                   ))
-                )}
-                {Array.isArray(serviceAreas) && serviceAreas.length > 8 && (
-                  <>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild>
-                      <Link href="/areas" className="p-2 text-blue-600 font-medium">
-                        View All Areas →
-                      </Link>
-                    </DropdownMenuItem>
-                  </>
                 )}
               </DropdownMenuContent>
             </DropdownMenu>
@@ -222,24 +213,22 @@ export function NavigationEnhanced() {
                     <Star className="h-4 w-4" />
                     Service Areas
                   </DropdownMenuSubTrigger>
-                  <DropdownMenuSubContent>
+                  <DropdownMenuSubContent className="max-h-80 overflow-y-auto">
                     <DropdownMenuItem asChild>
-                      <Link href="/areas">All Areas</Link>
+                      <Link href="/areas">All Service Areas</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     {isLoading ? (
                       <DropdownMenuItem disabled>Loading...</DropdownMenuItem>
                     ) : (
-                      Array.isArray(serviceAreas) && serviceAreas.slice(0, 6).map((area) => (
+                      Array.isArray(serviceAreas) && serviceAreas.map((area) => (
                         <DropdownMenuItem key={area.id} asChild>
-                          <Link href={`/areas/${area.slug}`}>{area.name}</Link>
+                          <Link href={`/areas/${area.slug}`} className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
+                            {area.name}
+                          </Link>
                         </DropdownMenuItem>
                       ))
-                    )}
-                    {Array.isArray(serviceAreas) && serviceAreas.length > 6 && (
-                      <DropdownMenuItem asChild>
-                        <Link href="/areas">View All →</Link>
-                      </DropdownMenuItem>
                     )}
                   </DropdownMenuSubContent>
                 </DropdownMenuSub>
