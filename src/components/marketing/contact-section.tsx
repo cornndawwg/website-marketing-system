@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { MapPin, Phone, Mail } from 'lucide-react'
+import { QuoteCalculatorModal } from '@/components/quote-calculator-modal'
 
 export function ContactSection() {
   return (
@@ -50,6 +51,14 @@ export function ContactSection() {
                   <p className="text-gray-600">info@morelandwindowcleaning.com</p>
                 </div>
               </div>
+            </div>
+            
+            <div className="pt-4">
+              <QuoteCalculatorModal>
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+                  Get Free Quote
+                </Button>
+              </QuoteCalculatorModal>
             </div>
           </div>
           

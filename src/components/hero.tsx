@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button'
-import Link from 'next/link'
+import { QuoteCalculatorModal } from '@/components/quote-calculator-modal'
 
 export function Hero() {
   return (
@@ -35,9 +35,11 @@ export function Hero() {
                 Professional window cleaning that's as reliable as it is refreshing. Serving homeowners and businesses across Georgia with a smile.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button asChild size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-                  <Link href="#quote-calculator">Get A Free Quote</Link>
-                </Button>
+                <QuoteCalculatorModal>
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
+                    Get A Free Quote
+                  </Button>
+                </QuoteCalculatorModal>
               </div>
             </div>
           </div>

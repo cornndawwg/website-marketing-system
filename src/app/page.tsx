@@ -2,7 +2,7 @@ import { Hero } from '@/components/hero'
 import { Services } from '@/components/services'
 import { BenefitsRow } from '@/components/marketing/benefits-row'
 import { PremiumSection } from '@/components/marketing/premium-section'
-import { QuoteCalculator } from '@/components/quote-calculator'
+import { QuoteCalculatorModal } from '@/components/quote-calculator-modal'
 import { Testimonials } from '@/components/testimonials'
 import { TrustBadges } from '@/components/marketing/trust-badges'
 import { ContactSection } from '@/components/marketing/contact-section'
@@ -21,7 +21,6 @@ export default function Home() {
         <Services />
         <BenefitsRow />
         <PremiumSection />
-        <QuoteCalculator />
         <Testimonials />
         <TrustBadges />
         <ContactSection />
