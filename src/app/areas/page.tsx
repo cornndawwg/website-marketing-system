@@ -24,15 +24,6 @@ export default async function AreasPage() {
     select: { name: true, slug: true }
   })
 
-  // Group areas by county for better organization
-  const groupedAreas = areas.reduce((acc, area) => {
-    const county = area.name.includes('County') ? area.name : 'Other Areas'
-    if (!acc[county]) {
-      acc[county] = []
-    }
-    acc[county].push(area)
-    return acc
-  }, {} as Record<string, typeof areas>)
 
   return (
     <div className="min-h-screen bg-white">
@@ -84,34 +75,25 @@ export default async function AreasPage() {
             </p>
           </div>
 
-          <div className="space-y-12">
-            {Object.entries(groupedAreas).map(([county, countyAreas]) => (
-              <div key={county}>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 border-b border-gray-200 pb-2">
-                  {county}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                  {countyAreas.map((area, index) => (
-                    <Link 
-                      key={area.slug} 
-                      href={`/areas/${area.slug}`}
-                      className="group block bg-white rounded-xl border border-gray-200 p-6 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
-                    >
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                          <MapPin className="h-5 w-5 text-blue-600" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                            {area.name}
-                          </h4>
-                          <p className="text-sm text-gray-500">Window Cleaning</p>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {areas.map((area, index) => (
+              <Link 
+                key={area.slug} 
+                href={`/areas/${area.slug}`}
+                className="group block bg-white rounded-xl border border-gray-200 p-6 hover:border-blue-300 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                    <MapPin className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                      {area.name}
+                    </h4>
+                    <p className="text-sm text-gray-500">Window Cleaning</p>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
