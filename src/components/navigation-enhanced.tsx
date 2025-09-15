@@ -163,7 +163,7 @@ export function NavigationEnhanced() {
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-[1200px] max-h-96 overflow-y-auto" align="start">
+              <DropdownMenuContent className="w-screen max-w-none max-h-96 overflow-y-auto" align="start">
                 <DropdownMenuItem asChild>
                   <Link href="/areas" className="flex items-center gap-3 p-3">
                     <Star className="h-5 w-5 text-blue-600" />
@@ -179,27 +179,27 @@ export function NavigationEnhanced() {
                     <div className="text-sm text-gray-500">Loading areas...</div>
                   </DropdownMenuItem>
                 ) : (
-                  <div className="grid grid-cols-5 gap-3 p-4">
+                  <div className="grid grid-cols-8 gap-6 p-6">
                     {Object.entries(organizedAreas).map(([countyName, { county, cities }]) => (
                       <div key={countyName} className="space-y-2">
                         {/* County Header */}
                         {county && (
                           <DropdownMenuItem asChild>
-                            <Link href={`/areas/${county.slug}`} className="flex items-center gap-2 p-2 font-semibold text-blue-600 hover:bg-blue-50 rounded">
+                            <Link href={`/areas/${county.slug}`} className="flex items-center gap-3 p-3 font-semibold text-blue-600 hover:bg-blue-50 rounded">
                               <div className="w-2 h-2 bg-blue-600 rounded-full flex-shrink-0" />
-                              <span className="text-xs">{county.name}</span>
+                              <span className="text-sm">{county.name}</span>
                             </Link>
                           </DropdownMenuItem>
                         )}
                         
                         {/* Cities under county */}
                         {cities.length > 0 && (
-                          <div className="ml-4 space-y-0.5">
+                          <div className="ml-5 space-y-1">
                             {cities.map((city) => (
                               <DropdownMenuItem key={city.id} asChild>
-                                <Link href={`/areas/${city.slug}`} className="flex items-center gap-1.5 p-1.5 text-gray-600 hover:bg-gray-50 rounded">
-                                  <div className="w-1 h-1 bg-gray-400 rounded-full flex-shrink-0" />
-                                  <span className="text-xs">{city.name}</span>
+                                <Link href={`/areas/${city.slug}`} className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded">
+                                  <div className="w-1.5 h-1.5 bg-gray-400 rounded-full flex-shrink-0" />
+                                  <span className="text-sm">{city.name}</span>
                                 </Link>
                               </DropdownMenuItem>
                             ))}
