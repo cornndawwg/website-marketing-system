@@ -228,6 +228,7 @@
 - [x] FAQ content (/faq page)
 - [ ] Testimonials collection
 - [x] Review integration (Google Reviews CTA)
+- [x] Residential and Commercial SEO pages
 
 ### Marketing Setup
 - [ ] Google My Business

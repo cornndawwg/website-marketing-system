@@ -136,3 +136,36 @@ export function FAQSchema() {
     />
   )
 }
+
+export function ServiceSchema({ name, area }: { name: string; area?: string }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": name,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Moreland Window Cleaning",
+    },
+    "areaServed": area || "Walton County, GA",
+    "serviceType": name,
+  }
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  )
+}
+
+export function BreadcrumbsSchema({ items }: { items: { name: string; item: string }[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": items.map((it, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": it.name,
+      "item": it.item,
+    })),
+  }
+  return (
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  )
+}
