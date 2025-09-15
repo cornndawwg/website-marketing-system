@@ -218,7 +218,7 @@ wd# Moreland Window Cleaning MVP - Implementation Checklist
 - [x] Service area configuration
 - [x] Pricing rules setup
 - [x] Email templates configuration
-- [ ] Backup strategy
+- [x] Backup strategy (nightly GitHub Actions backup)
 
 ## Phase 9: Launch Preparation (Pending)
 

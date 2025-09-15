@@ -48,5 +48,32 @@ Environment variables required:
 - [x] Service areas reflect your operating regions
 - [x] Pricing rules match your business rates
 - [x] Email templates reviewed and updated
+- [x] Nightly Postgres backups scheduled (GitHub Action)
+
+## Backups: Setup & Restore
+
+### Configure secrets
+
+In GitHub repo Settings → Secrets and variables → Actions, add:
+
+- `DATABASE_URL` – Production Railway Postgres connection string
+
+The workflow `.github/workflows/db-backup.yml` runs daily at 03:00 UTC and stores a gzipped `pg_dump` as a GitHub Actions artifact (30 days retention).
+
+### Manual run
+
+GitHub → Actions → Nightly Postgres Backup → Run workflow.
+
+### Restore procedure (from local)
+
+1. Download artifact `.sql.gz`
+2. Decompress: `gunzip db_backup_*.sql.gz`
+3. Restore:
+
+```bash
+psql "$DATABASE_URL" -f db_backup_*.sql
+```
+
+For large DBs, consider `pg_restore` with a custom format dump.
 
 

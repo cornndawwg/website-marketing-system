@@ -1,0 +1,38 @@
+name: Nightly Postgres Backup
+
+on:
+  schedule:
+    - cron: '0 3 * * *'  # Every day at 03:00 UTC
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PostgreSQL client
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Generate backup filename
+        run: echo "BACKUP_FILE=db_backup_$(date -u +'%Y-%m-%dT%H-%M-%SZ').sql.gz" >> $GITHUB_ENV
+
+      - name: Dump database
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          if [ -z "${DATABASE_URL}" ]; then
+            echo "DATABASE_URL secret is not set" >&2
+            exit 1
+          fi
+          pg_dump "${DATABASE_URL}" --no-owner --format=plain | gzip > "${BACKUP_FILE}"
+
+      - name: Upload backup artifact (30 days retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.BACKUP_FILE }}
+          path: ${{ env.BACKUP_FILE }}
+          retention-days: 30
+
+
