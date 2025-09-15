@@ -1,9 +1,19 @@
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export async function GET() {
   const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
-  const { prisma } = await import('@/lib/prisma')
-  const areas = await prisma.serviceArea.findMany({ where: { active: true }, select: { slug: true } })
+  let areas: { slug: string }[] = []
+  try {
+    if (process.env.DATABASE_URL) {
+      const { prisma } = await import('@/lib/prisma')
+      areas = await prisma.serviceArea.findMany({ where: { active: true }, select: { slug: true } })
+    }
+  } catch {
+    areas = []
+  }
   const areaUrls = areas.map(a => `
   <url>
     <loc>${baseUrl}/areas/${a.slug}</loc>
