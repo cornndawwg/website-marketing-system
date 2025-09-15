@@ -3,7 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { ChatWidget } from "@/components/chat-widget";
-import { Navigation } from "@/components/navigation";
+import { NavigationEnhanced } from "@/components/navigation-enhanced";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -65,7 +65,7 @@ export default function RootLayout({
           />
         ) : null}
         <Providers>
-          <Navigation />
+          <NavigationEnhanced />
           {children}
           <ChatWidget />
         </Providers>
