@@ -215,9 +215,9 @@ wd# Moreland Window Cleaning MVP - Implementation Checklist
 ### Production Setup
 - [x] Database migrations
 - [x] Admin user creation
-- [ ] Service area configuration
-- [ ] Pricing rules setup
-- [ ] Email templates configuration
+- [x] Service area configuration
+- [x] Pricing rules setup
+- [x] Email templates configuration
 - [ ] Backup strategy
 
 ## Phase 9: Launch Preparation (Pending)
