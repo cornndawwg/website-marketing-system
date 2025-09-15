@@ -5,7 +5,7 @@ export async function GET() {
   const areas = await prisma.serviceArea.findMany({
     where: { active: true },
     orderBy: { name: 'asc' },
-    select: { slug: true, name: true }
+    select: { id: true, slug: true, name: true }
   })
-  return NextResponse.json({ areas })
+  return NextResponse.json(areas)
 }
