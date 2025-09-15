@@ -11,7 +11,7 @@ export function Hero() {
             <span className="h-2 w-2 rounded-full bg-green-400" />
             Streak‑free guarantee • Fully insured
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4" style={{ fontFamily: 'var(--font-display)' }}>
             Crystal‑Clear Window Cleaning
             <span className="block text-blue-200">for Homes & Businesses</span>
           </h1>
