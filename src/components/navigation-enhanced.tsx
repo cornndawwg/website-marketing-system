@@ -215,17 +215,17 @@ export function NavigationEnhanced() {
             </DropdownMenu>
 
             {/* Other Links */}
-            <Link href="/blog" className="text-gray-700 hover:text-blue-600">
-              Blog
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-blue-600">
-              Contact
-            </Link>
+            <Button variant="ghost" className="text-gray-700 hover:text-blue-600" asChild>
+              <Link href="/blog">Blog</Link>
+            </Button>
+            <Button variant="ghost" className="text-gray-700 hover:text-blue-600" asChild>
+              <Link href="/contact">Contact</Link>
+            </Button>
             
             {session ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" className="text-gray-700 hover:text-blue-600">
                     <User className="h-4 w-4 mr-2" />
                     {session.user?.name || session.user?.email}
                   </Button>
