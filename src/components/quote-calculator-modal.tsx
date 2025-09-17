@@ -126,7 +126,7 @@ export function QuoteCalculatorModal({ children }: QuoteCalculatorModalProps) {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="third-windows">Third Floor Windows</Label>
+                  <Label htmlFor="third-windows">Third Floor<br />Windows</Label>
                   <Input
                     id="third-windows"
                     type="number"
